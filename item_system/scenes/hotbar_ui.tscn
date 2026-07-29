@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cgcek0k0y03rx"]
+
+[node name="HotbarUI" type="CenterContainer" unique_id=732533591]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=1807627892]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ceoo5mg001svv"]
+
+[ext_resource type="Texture2D" uid="uid://cdw75bobimet6" path="res://item_system/sprites/HotbarSlot.png" id="1_13i0q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gefd"]
+atlas = ExtResource("1_13i0q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfh68"]
+atlas = ExtResource("1_13i0q")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tucc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gefd")
+}],
+"loop": 1,
+"name": &"selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfh68")
+}],
+"loop": 1,
+"name": &"unselected",
+"speed": 5.0
+}]
+
+[node name="Slot" type="Control" unique_id=427470666]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HotbarSprite" type="AnimatedSprite2D" parent="." unique_id=1256110733]
+sprite_frames = SubResource("SpriteFrames_tucc5")
+animation = &"unselected"
