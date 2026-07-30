@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://ch0oc2x3h440v" path="res://sprites/ground/DirtTileset.png" id="1_feb5d"]
 [ext_resource type="Texture2D" uid="uid://bc2purak8fsm8" path="res://sprites/BlockTileset.png" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://d1500plgon6ra" path="res://player.tscn" id="3_7jktm"]
-[ext_resource type="Script" uid="uid://dkxroqnwrlsuj" path="res://block_system/scripts/BlockSystem.gd" id="4_vef74"]
 [ext_resource type="Script" uid="uid://dqgs1diw7vwkt" path="res://item_system/scripts/Inventory.gd" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://ceoo5mg001svv" path="res://item_system/scenes/hotbar_slot.tscn" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://cgcek0k0y03rx" path="res://item_system/scenes/hotbar_ui.tscn" id="6_ryrav"]
@@ -57,7 +56,6 @@ metadata/_edit_lock_ = true
 z_index = 2
 tile_map_data = PackedByteArray("AAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAHAAMAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAHAAQAAAACAAAAAAAGAAMAAAADAAAAAAAGAAQAAAADAAAAAAAFAAQAAAADAAAAAAAFAAMAAAADAAAAAAAFAAYAAAAAAAEAAAAGAAYAAAABAAEAAAAHAAYAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_fj7yv")
-script = ExtResource("4_vef74")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1639030634 instance=ExtResource("3_7jktm")]

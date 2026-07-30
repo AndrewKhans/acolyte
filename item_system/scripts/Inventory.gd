@@ -38,19 +38,17 @@ func _process(_delta: float) -> void:
 		hotbar_ui.get_node("HBox").get_node("Slot%d" % current_slot).get_node("HotbarSprite").play("selected")
 		hotbar_ui.get_node("HBox").get_node("Slot%d" % previous_slot).get_node("HotbarSprite").play("unselected")
 		
-func add_itemStack_to_hotbar(item: ItemStack) -> bool:
+func add_itemStack_to_hotbar(item: ItemStack):
 	var item_type = item.get_script().get_global_name()
-	var slot
 	
+	var slot
 	if item_type == "Shovel": slot = 0
 	if item_type == "Seeds":  slot = 1
-		
+	
 	hotbar_items[slot] = item
 	update_slot_icon(slot)
-	print_debug("Item type is: ", item.get_script().get_global_name())
 	
-	return false
-	
+
 #func add_itemStack_to_hotbar(item: ItemStack) -> bool:
 	## Try to stack with existing items
 	#for stack in hotbar_items:
@@ -83,3 +81,9 @@ func update_slot_icon(slotNum) -> void:
 		var itemSprite := Sprite2D.new()
 		itemSprite.texture = hotbar_items[slotNum].item_texture
 		hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).add_child(itemSprite)
+
+func primary_action_held_item() -> void:
+	hotbar_items[current_slot].primary_action()
+	
+func secondary_action_held_item() -> void:
+	hotbar_items[current_slot].secondary_action()
