@@ -26,6 +26,17 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
+func _input(event):
+	var targeted_square = update_tile_outline()
+	if event.is_action_pressed("primary_action"):
+		# If they hold left click, break the target block
+		# If there is no targeted block, call the left click action of their item
+		$Inventory.primary_action_held_item()
+	if event.is_action_pressed("secondary_action"):
+		# If they click on an interactable block, interact with it
+		print_debug(targeted_square)
+		# Else, call the right click action of their item
+		$Inventory.secondary_action_held_item(targeted_square)
 
 func update_tile_outline():
 	var mouse_pos = get_global_mouse_position()
@@ -41,3 +52,5 @@ func update_tile_outline():
 
 	tile_outline.global_position = snapped_pos
 	tile_outline.visible = true
+	
+	return tile_pos

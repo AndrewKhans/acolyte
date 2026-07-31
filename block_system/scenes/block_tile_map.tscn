@@ -1,0 +1,30 @@
+[gd_scene format=4 uid="uid://b75pxin682c3m"]
+
+[ext_resource type="Texture2D" uid="uid://bc2purak8fsm8" path="res://sprites/BlockTileset.png" id="1_3wrl8"]
+[ext_resource type="Script" uid="uid://dkxroqnwrlsuj" path="res://block_system/scripts/BlockSystem.gd" id="2_hd7oj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]
+texture = ExtResource("1_3wrl8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fj7yv"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_036b0")
+
+[node name="BlockTileMap" type="TileMapLayer" unique_id=953929673]
+z_index = 2
+tile_map_data = PackedByteArray("AAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAHAAMAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAHAAQAAAACAAAAAAAGAAMAAAADAAAAAAAGAAQAAAADAAAAAAAFAAQAAAADAAAAAAAFAAMAAAADAAAAAAAFAAYAAAAAAAEAAAAGAAYAAAABAAEAAAAHAAYAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_fj7yv")
+script = ExtResource("2_hd7oj")
+metadata/_edit_lock_ = true
