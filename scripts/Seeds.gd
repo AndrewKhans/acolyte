@@ -2,11 +2,9 @@ class_name Seeds extends ItemStack
 
 func _init(_count: int):
 	var item_texture = preload("res://sprites/items/SeedsItem.png")
-	var block_tileset_coords = Vector2i(2,0)
-	super(item_texture, block_tileset_coords, _count)
+	super(item_texture, _count)
 
-func secondary_action(Vector2i: targeted_square):
-	 #Place seeds at target location
-	print_debug("right clicked seeds")
-	$BlockTileMap.add_block(SeedsBlock(targeted_square))
-	func add_block(coords: Vector2i, block) -> void:
+func secondary_action(target_loc: Vector2):
+	var target_block = BlockSystem.world_coords_to_block_coords(target_loc)
+	var placed = BlockSystem.instance.add_block(SeedsBlock.new(target_block))
+	if placed: self.count -= 1

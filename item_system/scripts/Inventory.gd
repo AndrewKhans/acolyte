@@ -12,7 +12,7 @@ func _ready() -> void:
 	create_hotbar_ui_slots()
 	for i in range(HOTBAR_SIZE): hotbar_items.append(null)
 	
-	add_itemStack_to_hotbar(Shovel.new(1))
+	add_itemStack_to_hotbar(Shovel.new())
 	add_itemStack_to_hotbar(Seeds.new(5))
 	
 	hotbar_ui.get_node("HBox").get_node("Slot0").get_node("HotbarSprite").play("selected")
@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("hotkey_4"): current_slot = 3
 	elif Input.is_action_just_pressed("hotkey_5"): current_slot = 4
 	elif Input.is_action_just_pressed("hotkey_6"): current_slot = 5
-		
+	
 	if Input.is_action_just_pressed("hotbar_scroll_up"):
 		current_slot += 1
 		if current_slot >= HOTBAR_SIZE: current_slot = 0 
@@ -75,15 +75,34 @@ func create_hotbar_ui_slots() -> void:
 
 # Update the item icon and count in a slot
 func update_slot_icon(slotNum) -> void:
-	if hotbar_items[slotNum] == null:
-		hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).get_node("HotbarSprite").play("selected")
-	else:
+	var hotbarSprite := hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).get_node_or_null("ItemSprite")
+	
+	if hotbar_items[slotNum] == null: # Slot should be empty
+		if hotbarSprite != null: hotbarSprite.queue_free()
+	elif hotbarSprite == null: # Slot is empty but should have a sprite (it was just added to hotbar)
 		var itemSprite := Sprite2D.new()
+		itemSprite.name = "ItemSprite"
 		itemSprite.texture = hotbar_items[slotNum].item_texture
 		hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).add_child(itemSprite)
-
-func primary_action_held_item() -> void:
-	hotbar_items[current_slot].primary_action()
+		
+		var label := Label.new()
+		label.name = "Count"
+		label.text = "" if hotbar_items[slotNum].count < 2 else str(hotbar_items[slotNum].count)
+		#var size := itemSprite.texture.get_size()
+		itemSprite.add_child(label)
+	else: # Update count
+		var label := hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).get_node("ItemSprite").get_node("Count")
+		label.text = "" if hotbar_items[slotNum].count < 2 else str(hotbar_items[slotNum].count)
+		
+		
+func primary_action_held_item(target_loc: Vector2) -> void:
+	if hotbar_items[current_slot] == null: return
+	hotbar_items[current_slot].primary_action(target_loc)
+	if hotbar_items[current_slot].count == 0: hotbar_items[current_slot] = null
+	update_slot_icon(current_slot)
 	
-func secondary_action_held_item() -> void:
-	hotbar_items[current_slot].secondary_action()
+func secondary_action_held_item(target_loc: Vector2) -> void:
+	if hotbar_items[current_slot] == null: return
+	hotbar_items[current_slot].secondary_action(target_loc)
+	if hotbar_items[current_slot].count == 0: hotbar_items[current_slot] = null
+	update_slot_icon(current_slot)
