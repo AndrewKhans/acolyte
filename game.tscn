@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://n5ky7gkdfwos"]
 
 [ext_resource type="Script" uid="uid://b4gfde5r065yr" path="res://game.gd" id="1_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://ch0oc2x3h440v" path="res://sprites/ground/DirtTileset.png" id="1_feb5d"]
+[ext_resource type="Texture2D" uid="uid://ch0oc2x3h440v" path="res://sprites/ground/DirtTilemap.png" id="1_feb5d"]
 [ext_resource type="Texture2D" uid="uid://bc2purak8fsm8" path="res://sprites/BlockTileset.png" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://d1500plgon6ra" path="res://player.tscn" id="3_7jktm"]
 [ext_resource type="Script" uid="uid://dqgs1diw7vwkt" path="res://item_system/scripts/Inventory.gd" id="5_7jktm"]
@@ -29,7 +29,7 @@ sources/2 = SubResource("TileSetAtlasSource_aqk2v")
 texture = ExtResource("2_fc0e3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
 0:1/0 = 0
