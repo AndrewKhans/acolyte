@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bysfotrg88jmo"
-path="res://.godot/imported/SeedsTile.png-697603fd5512aa9b5aa68a41364f35a1.ctex"
+uid="uid://cmxxdppe3vnwm"
+path="res://.godot/imported/BackgroundDim.png-e8d84ddd457db3fcaa84a3d310f9a957.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/items/SeedsTile.png"
-dest_files=["res://.godot/imported/SeedsTile.png-697603fd5512aa9b5aa68a41364f35a1.ctex"]
+source_file="res://sprites/interfaces/BackgroundDim.png"
+dest_files=["res://.godot/imported/BackgroundDim.png-e8d84ddd457db3fcaa84a3d310f9a957.ctex"]
 
 [params]
 

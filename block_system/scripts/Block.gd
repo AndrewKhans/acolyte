@@ -14,5 +14,5 @@ func on_tick(delta: float) -> void:
 func primary_action():
 	pass
 
-func secondary_action():
+func secondary_action(HUD):
 	pass

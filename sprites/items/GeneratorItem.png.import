@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clhattmhl3nuf"
-path="res://.godot/imported/WaterTilemap1.png-fb1b2beee5152f3518b6a54d3600063e.ctex"
+uid="uid://c4nwtcu63n5iu"
+path="res://.godot/imported/GeneratorItem.png-415f740ac5c69acf369b3d14d828e281.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ground/WaterTilemap1.png"
-dest_files=["res://.godot/imported/WaterTilemap1.png-fb1b2beee5152f3518b6a54d3600063e.ctex"]
+source_file="res://sprites/items/GeneratorItem.png"
+dest_files=["res://.godot/imported/GeneratorItem.png-415f740ac5c69acf369b3d14d828e281.ctex"]
 
 [params]
 

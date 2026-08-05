@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b75pxin682c3m"]
 
-[ext_resource type="Texture2D" uid="uid://bc2purak8fsm8" path="res://sprites/BlockTileset.png" id="1_3wrl8"]
+[ext_resource type="Texture2D" uid="uid://bc2purak8fsm8" path="res://sprites/tilesets/BlockTileset.png" id="1_3wrl8"]
 [ext_resource type="Script" uid="uid://dkxroqnwrlsuj" path="res://block_system/scripts/BlockSystem.gd" id="2_hd7oj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]

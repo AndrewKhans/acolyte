@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 	add_itemStack_to_hotbar(Shovel.new())
 	add_itemStack_to_hotbar(Seeds.new(5))
+	add_itemStack_to_hotbar(Generator.new(3))
 	
 	hotbar_ui.get_node("HBox").get_node("Slot0").get_node("HotbarSprite").play("selected")
 
@@ -42,8 +43,12 @@ func add_itemStack_to_hotbar(item: ItemStack):
 	var item_type = item.get_script().get_global_name()
 	
 	var slot
-	if item_type == "Shovel": slot = 0
-	if item_type == "Seeds":  slot = 1
+	if item_type == "Shovel":    slot = 0
+	if item_type == "Seeds":     slot = 1
+	if item_type == "Wheat":     slot = 2
+	if item_type == "Metal":     slot = 3
+	if item_type == "Generator": slot = 4
+	if item_type == "Producer":  slot = 5
 	
 	hotbar_items[slot] = item
 	update_slot_icon(slot)

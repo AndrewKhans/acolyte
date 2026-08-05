@@ -2,7 +2,6 @@ class_name BlockSystem extends TileMapLayer
 
 const TILE_SIZE = 32
 static var instance: BlockSystem
-
 var coords_to_block: Dictionary
 
 static func world_coords_to_block_coords(mouseCoords: Vector2i) -> Vector2i:
@@ -18,7 +17,7 @@ func _ready():
 func _init() -> void:
 	self.coords_to_block = {}
 
-func get_block_obj(coords: Vector2i):
+func get_block_obj(coords: Vector2i) -> Block:
 	return self.coords_to_block.get(coords, null)
 
 func add_block(block: Block) -> bool:

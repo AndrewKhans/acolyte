@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kbhp04eh6bka"
-path="res://.godot/imported/WheatTile.png-e2c69d5e83556ddd9c3936b22a743caa.ctex"
+uid="uid://gvu4udegkpha"
+path="res://.godot/imported/GeneratorInterface.png-9ae36096bcec6f71ce9a5854935c238c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/items/WheatTile.png"
-dest_files=["res://.godot/imported/WheatTile.png-e2c69d5e83556ddd9c3936b22a743caa.ctex"]
+source_file="res://sprites/interfaces/GeneratorInterface.png"
+dest_files=["res://.godot/imported/GeneratorInterface.png-9ae36096bcec6f71ce9a5854935c238c.ctex"]
 
 [params]
 

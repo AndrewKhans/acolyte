@@ -4,6 +4,7 @@ const SPEED = 100
 const TILE_SIZE = 32
 
 @onready var tile_outline := $TileOutline # Sprite2D child node
+@export var HUD: Control
 
 func _ready():
 	tile_outline.visible = false
@@ -35,6 +36,12 @@ func _input(event):
 		$Inventory.primary_action_held_item(mouse_pos)
 	if event.is_action_pressed("secondary_action"):
 		# If they click on an interactable block, interact with it
+		var target_block := BlockSystem.world_coords_to_block_coords(mouse_pos)
+		var block := BlockSystem.instance.get_block_obj(target_block)
+		if block != null:
+			block.secondary_action(HUD)
+			return
+
 		# Else, call the right click action of their item
 		$Inventory.secondary_action_held_item(mouse_pos)
 
