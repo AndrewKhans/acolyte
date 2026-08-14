@@ -2,6 +2,15 @@ class_name Inventory extends Node
 
 const HOTBAR_SIZE: int = 6
 
+const ITEM_TYPE_TO_SLOT: Dictionary = {
+	"Shovel":    0,
+	"Seeds":     1,
+	"Wheat":     2,
+	"IronIngot": 3,
+	"Generator": 4,
+	"Producer":  5,
+}
+
 @export var HotbarSlotScene: PackedScene
 @export var hotbar_ui: CenterContainer
 
@@ -14,7 +23,10 @@ func _ready() -> void:
 	
 	add_itemStack_to_hotbar(Shovel.new())
 	add_itemStack_to_hotbar(Seeds.new(5))
-	add_itemStack_to_hotbar(Generator.new(3))
+	add_itemStack_to_hotbar(Wheat.new(20))
+	add_itemStack_to_hotbar(IronIngot.new(15))
+	add_itemStack_to_hotbar(Generator.new(5))
+	add_itemStack_to_hotbar(Producer.new(5))
 	
 	hotbar_ui.get_node("HBox").get_node("Slot0").get_node("HotbarSprite").play("selected")
 
@@ -42,33 +54,25 @@ func _process(_delta: float) -> void:
 func add_itemStack_to_hotbar(item: ItemStack):
 	var item_type = item.get_script().get_global_name()
 	
-	var slot
-	if item_type == "Shovel":    slot = 0
-	if item_type == "Seeds":     slot = 1
-	if item_type == "Wheat":     slot = 2
-	if item_type == "Metal":     slot = 3
-	if item_type == "Generator": slot = 4
-	if item_type == "Producer":  slot = 5
+	var slot = ITEM_TYPE_TO_SLOT[item_type]
 	
-	hotbar_items[slot] = item
+	if hotbar_items[slot] == null:
+		hotbar_items[slot] = item
+	else:
+		hotbar_items[slot].count += item.count
 	update_slot_icon(slot)
 	
+# Returns the player's count of the given item
+func get_item_count(item_type) -> int:
+	if hotbar_items[ITEM_TYPE_TO_SLOT[item_type]] == null: return 0
+	return hotbar_items[ITEM_TYPE_TO_SLOT[item_type]].count
 
-#func add_itemStack_to_hotbar(item: ItemStack) -> bool:
-	## Try to stack with existing items
-	#for stack in hotbar_items:
-		#if stack.item.get_script() == item.get_script():
-			#stack.count += item.count
-			#return true
-#
-	## Otherwise create a new stack
-	#if hotbar_items.size() < HOTBAR_SIZE:
-		#hotbar_items.append(item)
-		#return true
-#
-	## Inventory full
-	#return false
-
+func remove_items(item_type, count) -> void:
+	var slotNum = ITEM_TYPE_TO_SLOT[item_type]
+	hotbar_items[slotNum].count -= count
+	if hotbar_items[slotNum].count <= 0: hotbar_items[slotNum].count = 0
+	update_slot_icon(slotNum)
+	
 func create_hotbar_ui_slots() -> void:
 	for i in range(HOTBAR_SIZE):
 		var slot = HotbarSlotScene.instantiate()
@@ -82,7 +86,7 @@ func create_hotbar_ui_slots() -> void:
 func update_slot_icon(slotNum) -> void:
 	var hotbarSprite := hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).get_node_or_null("ItemSprite")
 	
-	if hotbar_items[slotNum] == null: # Slot should be empty
+	if hotbar_items[slotNum] == null or hotbar_items[slotNum].count == 0: # Slot should be empty
 		if hotbarSprite != null: hotbarSprite.queue_free()
 	elif hotbarSprite == null: # Slot is empty but should have a sprite (it was just added to hotbar)
 		var itemSprite := Sprite2D.new()

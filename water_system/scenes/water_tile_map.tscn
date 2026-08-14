@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://duf7us8o2ge7b"]
+
+[ext_resource type="Texture2D" uid="uid://clhattmhl3nuf" path="res://water_system/sprites/WaterTileset.png" id="1_iunde"]
+[ext_resource type="Texture2D" uid="uid://bkvuhp57havmh" path="res://water_system/sprites/CanalTileset.png" id="2_gdr6c"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iotsf"]
+texture = ExtResource("1_iunde")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_80cx4"]
+texture = ExtResource("2_gdr6c")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mormn"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_iotsf")
+sources/1 = SubResource("TileSetAtlasSource_80cx4")
+
+[node name="WaterTileMap" type="TileMapLayer" unique_id=1174881514]
+z_index = 3
+tile_map_data = PackedByteArray("AAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAAKAAMAAAAAAAEAAAALAAMAAAAAAAEAAAAMAAMAAAAAAAEAAAALAAQAAQAAAAAAAFALAAUAAQAAAAAAAFALAAYAAQAAAAEAADAMAAYAAQAAAAIAAAANAAYAAQAAAAQAAAAMAAcAAQAAAAAAAFAMAAgAAQAAAAQAAFA=")
+tile_set = SubResource("TileSet_mormn")

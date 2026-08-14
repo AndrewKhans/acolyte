@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b8rkfmw7fw1vr"]
+
+[ext_resource type="Texture2D" uid="uid://cb0wjgtrkqaax" path="res://sprites/items/ArtifactItem.png" id="1_g1ykp"]
+[ext_resource type="Script" uid="uid://dq4xm7c3c0pn" path="res://src/entities/moving_artifact.gd" id="2_geiwx"]
+
+[node name="MovingArtifact" type="Sprite2D" unique_id=1458985269]
+z_index = 3
+z_as_relative = false
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_g1ykp")
+script = ExtResource("2_geiwx")

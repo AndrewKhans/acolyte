@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gvu4udegkpha"
-path="res://.godot/imported/GeneratorInterface.png-9ae36096bcec6f71ce9a5854935c238c.ctex"
+uid="uid://cnxqatyx6volm"
+path="res://.godot/imported/TileOutline15.png-ebd9adbb5d767fd6f27a6a7b1075e92f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/interfaces/GeneratorInterface.png"
-dest_files=["res://.godot/imported/GeneratorInterface.png-9ae36096bcec6f71ce9a5854935c238c.ctex"]
+source_file="res://sprites/tileoutline/TileOutline15.png"
+dest_files=["res://.godot/imported/TileOutline15.png-ebd9adbb5d767fd6f27a6a7b1075e92f.ctex"]
 
 [params]
 
