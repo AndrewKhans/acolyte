@@ -3,4 +3,4 @@ This game was built for [Farm Jam 2026 - Eldritch Horrors and Mushrooms](https:/
 
 I made it using the [Godot Game Engine](https://godotengine.org/) and its GDScript language
 
-Play it here: evil-andrew.itch.io/acolyte
+Play it here: [evil-andrew.itch.io/acolyte](evil-andrew.itch.io/acolyte)
