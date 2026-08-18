@@ -8,3 +8,4 @@ func _init(worldCoords: Vector2i):
 func touched_player(player: CharacterBody2D) -> void:
 	player.get_node("Inventory").add_itemStack_to_hotbar(IronIngot.new(1))
 	BlockSystem.instance.remove_block(self.world_coords)
+	AudioSystem.instance.iron()

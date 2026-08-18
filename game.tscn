@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cgcek0k0y03rx" path="res://item_system/scenes/hotbar_ui.tscn" id="6_ryrav"]
 [ext_resource type="Texture2D" uid="uid://dt4pt0svqmpju" path="res://sprites/tileoutline/TileOutline2.png" id="9_7knny"]
 [ext_resource type="Texture2D" uid="uid://cktm47h2r0ycf" path="res://sprites/tileoutline/TileOutline3.png" id="10_082n1"]
-[ext_resource type="Script" uid="uid://cit4xvjqq0km3" path="res://src/hud.gd" id="10_iotsf"]
+[ext_resource type="Script" uid="uid://cit4xvjqq0km3" path="res://src/hud/hud.gd" id="10_iotsf"]
 [ext_resource type="PackedScene" uid="uid://cxe0b5o06gw76" path="res://src/blocks/ProducerUI.tscn" id="11_lc2xo"]
 [ext_resource type="Texture2D" uid="uid://cj2n60ljjtrje" path="res://sprites/tileoutline/TileOutline4.png" id="11_xex6t"]
 [ext_resource type="Texture2D" uid="uid://ca881kkwjllot" path="res://sprites/tileoutline/TileOutline5.png" id="12_aa0lp"]
@@ -32,6 +32,16 @@
 [ext_resource type="Texture2D" uid="uid://dfuoeoo6unpwy" path="res://sprites/tileoutline/TileOutline14.png" id="21_t46w6"]
 [ext_resource type="Texture2D" uid="uid://cnxqatyx6volm" path="res://sprites/tileoutline/TileOutline15.png" id="22_m28ev"]
 [ext_resource type="Texture2D" uid="uid://bi2bm6oco4lhi" path="res://sprites/tileoutline/TileOutline1.png" id="23_lwlx3"]
+[ext_resource type="PackedScene" uid="uid://dnkm5dxehl6kb" path="res://src/hud/artifact_counter.tscn" id="33_7knny"]
+[ext_resource type="Script" uid="uid://dn477ilkh3h7w" path="res://src/entities/big_guy.gd" id="34_aa0lp"]
+[ext_resource type="Texture2D" uid="uid://cwjs2ewxyihx0" path="res://sprites/BigGuyAsleep.png" id="34_xex6t"]
+[ext_resource type="Texture2D" uid="uid://dw5qjsyrak0ji" path="res://sprites/BigGuyAwake.png" id="35_aa0lp"]
+[ext_resource type="AudioStream" uid="uid://bl3h6kry8lq3h" path="res://sound/Outro.wav" id="37_iu0sx"]
+[ext_resource type="Script" uid="uid://kuhvnbbients" path="res://audio.gd" id="37_klri6"]
+[ext_resource type="AudioStream" uid="uid://bnqr66uvdj4hj" path="res://sound/SFX.wav" id="38_4v2jo"]
+[ext_resource type="AudioStream" uid="uid://s2b57p7df5o" path="res://sound/Ambient 1.wav" id="39_l1i01"]
+[ext_resource type="AudioStream" uid="uid://mb3qlfvh08ax" path="res://sound/sfx/Iron.wav" id="40_r62pu"]
+[ext_resource type="AudioStream" uid="uid://bjwet66s2s05i" path="res://sound/sfx/Wheat.wav" id="42_eu6ph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lc2xo"]
 texture = ExtResource("2_mfdv2")
@@ -72,6 +82,9 @@ texture_region_size = Vector2i(32, 32)
 3:3/0 = 0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 11.484442, -16, 11.697115, 7.9753056, -16, 7.5499554)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.081543, -12.081539, 12.081535, -12.1830635, 12.081535, 11.87849, -11.87849, 11.980015)
 
 [sub_resource type="TileSet" id="TileSet_fj7yv"]
 tile_size = Vector2i(32, 32)
@@ -142,7 +155,7 @@ MovingArtifact = ExtResource("17_e8heu")
 
 [node name="WaterTileMap" parent="." unique_id=1174881514 instance=ExtResource("1_mfdv2")]
 position = Vector2(1, 0)
-tile_map_data = PackedByteArray("AAALAAIAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAIAAAAAAAEAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAALAAIAAAABAAAAAGAMAAIAAAAAAAAAAAALAAMAAAACAAAAAGAMAAMAAAABAAAAADANAAIAAAABAAAAAFALAAEAAAACAAAAAAAMAAEAAAABAAAAAAANAAEAAAACAAAAAFANAAMAAAACAAAAADA=")
 script = ExtResource("2_iotsf")
 
 [node name="GroundTileMap" type="TileMapLayer" parent="." unique_id=1758176926]
@@ -152,19 +165,19 @@ metadata/_edit_lock_ = true
 
 [node name="BlockTileMap" type="TileMapLayer" parent="." unique_id=425234624]
 z_index = 2
-tile_map_data = PackedByteArray("AAAGAAoAAAABAAIAAAAGAAwAAAACAAEAAAAHAAkAAAACAAEAAAAHAAoAAAACAAIAAAAHAAsAAAACAAMAAAAHAAwAAAACAAEAAAAIAAoAAAADAAIAAAAIAAsAAAADAAMAAAAIAAwAAAACAAEAAAAJAAoAAAACAAEAAAAJAAsAAAACAAEAAAAKAAkAAAACAAEAAAAKAAsAAAACAAEAAAAEAAkAAAACAAEAAAAEAAsAAAACAAEAAAAFAAoAAAACAAEAAAAFAAwAAAACAAEAAAAGAAkAAAACAAEAAAAGAAsAAAABAAMAAAAJAAkAAAACAAEAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA8AAAAAAAAAAAD//w8AAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAADAAMAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAGAAoAAAABAAIAAAAHAAkAAAACAAEAAAAHAAoAAAACAAIAAAAHAAsAAAACAAMAAAAHAAwAAAACAAEAAAAIAAoAAAADAAIAAAAIAAsAAAADAAMAAAAIAAwAAAACAAEAAAAJAAoAAAACAAEAAAAJAAsAAAACAAEAAAAKAAkAAAACAAEAAAAKAAsAAAACAAEAAAAEAAkAAAACAAEAAAAEAAsAAAACAAEAAAAFAAoAAAACAAEAAAAFAAwAAAACAAEAAAAGAAkAAAACAAEAAAAGAAsAAAABAAMAAAAJAAkAAAACAAEAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA8AAAAAAAAAAAD//w8AAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAACAAIAAAABAAAAAAAEAAoAAAACAAEAAAADAAsAAAACAAEAAAAKAAoAAAACAAEAAAAFAAsAAAACAAEAAAAKAAwAAAACAAEAAAALAAsAAAACAAEAAAAFAAkAAAACAAEAAAAIAAkAAAACAAEAAAADAAwAAAACAAEAAAAEAAwAAAACAAEAAAAGAAwAAAACAAEAAAAJAAwAAAACAAEAAAALAAwAAAACAAEAAAALAAoAAAACAAEAAAALAAkAAAACAAEAAAADAAoAAAACAAEAAAADAAkAAAACAAEAAAAFAAgAAAACAAEAAAAGAAgAAAACAAEAAAAHAAgAAAACAAEAAAAIAAgAAAACAAEAAAAJAAgAAAACAAEAAAAFAA0AAAACAAEAAAAGAA0AAAACAAEAAAAHAA0AAAACAAEAAAAIAA0AAAACAAEAAAAJAA0AAAACAAEAAAAEAA0AAAACAAEAAAAKAA0AAAACAAEAAAAKAAgAAAACAAEAAAAEAAgAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_fj7yv")
 script = ExtResource("4_vef74")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1639030634 node_paths=PackedStringArray("HUD") instance=ExtResource("3_7jktm")]
 z_index = 5
-position = Vector2(240, 112)
+z_as_relative = false
+position = Vector2(240, 144)
 HUD = NodePath("CanvasLayer/HUD")
 
 [node name="TileOutline" type="AnimatedSprite2D" parent="Player" unique_id=1245923704]
 sprite_frames = SubResource("SpriteFrames_rvswv")
-animation = &"breaking"
 
 [node name="Inventory" type="Node" parent="Player" unique_id=1733998605 node_paths=PackedStringArray("hotbar_ui")]
 script = ExtResource("5_7jktm")
@@ -173,6 +186,16 @@ hotbar_ui = NodePath("../CanvasLayer/HUD/HotbarUI")
 metadata/_custom_type_script = "uid://dqgs1diw7vwkt"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=255044097]
+
+[node name="IntroFadeIn" type="ColorRect" parent="Player/CanvasLayer" unique_id=1166558879]
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.027409147, 0.027409151, 0.027409151, 1)
 
 [node name="HUD" type="Control" parent="Player/CanvasLayer" unique_id=1733611595]
 layout_mode = 3
@@ -184,6 +207,19 @@ grow_vertical = 2
 script = ExtResource("10_iotsf")
 metadata/_edit_lock_ = true
 
+[node name="ArtifactCounter" parent="Player/CanvasLayer/HUD" unique_id=751823370 instance=ExtResource("33_7knny")]
+z_index = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -68.0
+offset_top = 6.0
+offset_right = -68.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 1
+
 [node name="HotbarUI" parent="Player/CanvasLayer/HUD" unique_id=1096991056 instance=ExtResource("6_ryrav")]
 z_index = 4
 layout_mode = 1
@@ -192,12 +228,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -40.0
-offset_right = 10.0
-offset_bottom = 0.0
+offset_left = 6.0
+offset_top = -32.0
+offset_right = 26.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.8, 0.8)
 
 [node name="DayNightSystem" parent="Player/CanvasLayer/HUD" unique_id=1599593425 instance=ExtResource("15_7sc4i")]
 layout_mode = 1
@@ -224,6 +261,44 @@ visible = false
 layout_mode = 1
 
 [node name="Entities" type="Node" parent="." unique_id=1034127779]
+
+[node name="BigGuy" type="Node2D" parent="Entities" unique_id=1687410333]
+z_index = 6
+z_as_relative = false
+position = Vector2(240, 352)
+rotation = 1.5707964
+script = ExtResource("34_aa0lp")
+
+[node name="Asleep" type="Sprite2D" parent="Entities/BigGuy" unique_id=1157773305]
+z_index = 1
+texture = ExtResource("34_xex6t")
+
+[node name="Awake" type="Sprite2D" parent="Entities/BigGuy" unique_id=386201776]
+z_index = 6
+z_as_relative = false
+texture = ExtResource("35_aa0lp")
+
+[node name="Audio" type="Node" parent="." unique_id=1113797227]
+script = ExtResource("37_klri6")
+
+[node name="Outro" type="AudioStreamPlayer" parent="Audio" unique_id=1457133271]
+stream = ExtResource("37_iu0sx")
+
+[node name="GuyEat" type="AudioStreamPlayer" parent="Audio" unique_id=14022781]
+stream = ExtResource("38_4v2jo")
+volume_db = 2.0
+
+[node name="Ambient1" type="AudioStreamPlayer" parent="Audio" unique_id=160133978]
+stream = ExtResource("39_l1i01")
+volume_db = 18.0
+
+[node name="Iron" type="AudioStreamPlayer" parent="Audio" unique_id=918487406]
+stream = ExtResource("40_r62pu")
+volume_db = 2.0
+
+[node name="Wheat" type="AudioStreamPlayer" parent="Audio" unique_id=2129953398]
+stream = ExtResource("42_eu6ph")
+volume_db = 2.0
 
 [connection signal="cycle_completed" from="Player/CanvasLayer/HUD/DayNightSystem" to="." method="_on_day_night_system_cycle_completed"]
 [connection signal="midnight" from="Player/CanvasLayer/HUD/DayNightSystem" to="." method="_on_day_night_system_midnight"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ceoo5mg001svv"]
 
 [ext_resource type="Texture2D" uid="uid://cdw75bobimet6" path="res://item_system/sprites/HotbarSlot.png" id="1_13i0q"]
+[ext_resource type="FontFile" uid="uid://bdsmpk6w3ypgo" path="res://sprites/aseprite.otf" id="2_fnwnj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gefd"]
 atlas = ExtResource("1_13i0q")
@@ -36,3 +37,29 @@ anchors_preset = 0
 [node name="HotbarSprite" type="AnimatedSprite2D" parent="." unique_id=1256110733]
 sprite_frames = SubResource("SpriteFrames_tucc5")
 animation = &"unselected"
+
+[node name="Button" type="Button" parent="HotbarSprite" unique_id=67873608]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Count" type="Label" parent="." unique_id=396417319]
+z_index = 1
+layout_mode = 0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 15.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_fnwnj")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+vertical_alignment = 2

@@ -1,6 +1,7 @@
 extends Control
 
 const TEXT_ANIMATION_DURATION = 1
+const PROGRESS_BAR_FRAME_COUNT := 24
 
 var producer: ProducerBlock
 var player: CharacterBody2D
@@ -28,21 +29,8 @@ func _process(delta: float) -> void:
 
 func update_graphics(delta: float) -> void:
 	update_warning_text(delta)
-	
-	if self.producer.hasArtifact:
-		$Background/Artifact.show()
-		$Background/IronIngot.hide()
-		$Background/Button.texture_normal.set_current_frame(1)
-		return
-	else:
-		$Background/Button.texture_normal.set_current_frame(0)
-		
-	if $Background/Button.is_hovered() and self.producer.hasIron:
-		$Background/IronIngot.show()
-		$Background/Artifact.hide()
-	else:
-		$Background/Artifact.hide()
-		$Background/IronIngot.hide()
+	update_item_displayed()
+	update_progress_bar()
 
 func update_warning_text(delta: float) -> void:
 	if producer.hasArtifact:
@@ -68,41 +56,36 @@ func update_warning_text(delta: float) -> void:
 				$Background/Warning.set("theme_override_colors/font_color", black)
 			secondsSinceTextSwap = 0
 
+func update_item_displayed() -> void:
+	if self.producer.hasArtifact:
+		$Background/Artifact.show()
+		$Background/IronIngot.hide()
+		$Background/Button.texture_normal.set_current_frame(1)
+		return
+	else:
+		$Background/Button.texture_normal.set_current_frame(0)
+		
+	if $Background/Button.is_hovered() and self.producer.hasIron:
+		$Background/IronIngot.show()
+		$Background/Artifact.hide()
+	else:
+		$Background/Artifact.hide()
+		$Background/IronIngot.hide()
+
+func update_progress_bar() -> void:
+	#if not producer.running:
+		#$Background/ProgressBar.hide()
+		#return
+	
+	
+	var percentProgress = float(producer.processingCompleted) / producer.PROCESS_TIME_TICKS
+	
+	$Background/ProgressBar.frame = floor(percentProgress * PROGRESS_BAR_FRAME_COUNT)
+	$Background/ProgressBar.show()
 
 func _on_button_pressed() -> void:
-	var playerIronCount = self.player.get_node("Inventory").get_item_count("IronIngot")
-	if playerIronCount >= 0 and not producer.hasIron and not producer.hasArtifact:
+	var playerIronCount = player.get_node("Inventory").get_item_count("IronIngot")
+	if playerIronCount > 0 and not producer.hasIron and not producer.hasArtifact:
 		player.get_node("Inventory").remove_items("IronIngot", 1)
 		producer.hasIron = true
-
-#func insert_items_to_interface(itemType: String, machineCount: int, machineMaxCount: int) -> int:
-	#var spaceInMachine = machineMaxCount - machineCount
-	#var playerItemCount = self.player.get_node("Inventory").get_item_count(itemType)
-	#
-	#var amountToAdd = spaceInMachine if playerItemCount >= spaceInMachine else playerItemCount
-	#if amountToAdd <= 0: return 0
-	#self.player.get_node("Inventory").remove_items(itemType, amountToAdd)
-	#
-	#return amountToAdd
-#
-#func update_items_display(machineCount: int) -> void:
-	#var visibleItems = []
-	#var hiddenItems = []
-	#for item in all_items:
-		#if $Background/Items.get_node(item).visible:
-			#visibleItems.append(item)
-		#else:
-			#hiddenItems.append(item)
-	#
-	#var itemDiff = machineCount - len(visibleItems)
-	#if itemDiff > 0: # Need to show more items
-		#for i in range(itemDiff):
-			#var index := randi_range(0,len(hiddenItems)-1)
-			#var item = hiddenItems.pop_at(index)
-			#$Background/Items.get_node(item).show()
-	#elif itemDiff < 0: # Need to hide more wheats
-		#itemDiff *= -1
-		#for i in range(itemDiff):
-			#var index := randi_range(0,len(visibleItems)-1)
-			#var item = visibleItems.pop_at(index)
-			#$Background/Items.get_node(item).hide()
+		$Sfx.play()

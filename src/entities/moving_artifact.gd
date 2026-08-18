@@ -2,13 +2,13 @@ extends Sprite2D
 
 signal harvested
 
-const TARGET_POSITION := Vector2(146.1292, 239.6626)
+const TARGET_POSITION := Vector2(239,350)
 const MOVE_DURATION := 10.0
 
 func _ready() -> void:
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_ease(Tween.EASE_IN)
 
 	tween.tween_property(
 		self,

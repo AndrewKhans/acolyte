@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://canb7reocay1y" path="res://sprites/items/WheatItem.png" id="3_rn0vv"]
 [ext_resource type="Texture2D" uid="uid://dmt81f1rcbhha" path="res://sprites/interfaces/GeneratorButton.png" id="4_mbbc8"]
 [ext_resource type="Texture2D" uid="uid://cxqw3iwuh4vj1" path="res://sprites/interfaces/GeneratorButtonRunning.png" id="6_vwatr"]
+[ext_resource type="AudioStream" uid="uid://equ7oa63joe2" path="res://sound/sfx/Producer.wav" id="7_uwv3f"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_7sc4i"]
 frames = 2
@@ -52,6 +53,24 @@ offset_transform_enabled = true
 offset_transform_position_ratio = Vector2(-0.5, -0.5)
 offset_transform_visual_only = false
 texture = ExtResource("1_newgp")
+
+[node name="Hint" type="Label" parent="Background" unique_id=484341547]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.125
+anchor_right = 0.125
+anchor_bottom = 0.125
+offset_left = 0.67100525
+offset_top = 0.5822506
+offset_right = 204.671
+offset_bottom = 40.743607
+scale = Vector2(0.11, 0.11)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_grp3i")
+text = "Powering Adjacent
+Machines"
 
 [node name="Warning" type="Label" parent="Background" unique_id=1562818177]
 layout_mode = 1
@@ -206,21 +225,110 @@ texture = ExtResource("3_rn0vv")
 
 [node name="Wheat10" type="TextureRect" parent="Background/Wheats" unique_id=1351538009]
 layout_mode = 0
-offset_left = -0.60006714
-offset_top = -0.600029
-offset_right = 39.39993
-offset_bottom = 39.39997
+offset_left = -1.6001282
+offset_top = -0.40003204
+offset_right = 38.399868
+offset_bottom = 39.599968
 scale = Vector2(0.1, 0.1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_rn0vv")
 
 [node name="Wheat11" type="TextureRect" parent="Background/Wheats" unique_id=226743499]
-visible = false
 layout_mode = 0
-offset_left = 0.6000061
-offset_top = -2.199997
-offset_right = 40.600002
-offset_bottom = 37.800003
+offset_left = 1.8000793
+offset_top = -2.8000412
+offset_right = 41.800076
+offset_bottom = 37.19996
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat12" type="TextureRect" parent="Background/Wheats" unique_id=425485518]
+layout_mode = 0
+offset_left = -4.400238
+offset_top = -3.6001053
+offset_right = 35.59976
+offset_bottom = 36.399895
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat13" type="TextureRect" parent="Background/Wheats" unique_id=1784366441]
+layout_mode = 0
+offset_left = -2.2000427
+offset_top = -3.8000412
+offset_right = 37.799953
+offset_bottom = 36.20005
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat14" type="TextureRect" parent="Background/Wheats" unique_id=1375412442]
+layout_mode = 0
+offset_left = -1.8000183
+offset_top = -5.600075
+offset_right = 38.199978
+offset_bottom = 34.399925
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat15" type="TextureRect" parent="Background/Wheats" unique_id=1890677152]
+layout_mode = 0
+offset_left = -0.40005493
+offset_top = -0.600029
+offset_right = 39.59994
+offset_bottom = 39.39997
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat16" type="TextureRect" parent="Background/Wheats" unique_id=1721904179]
+layout_mode = 0
+offset_left = 0.3999939
+offset_top = -2.600006
+offset_right = 40.39999
+offset_bottom = 37.399994
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat17" type="TextureRect" parent="Background/Wheats" unique_id=1001681302]
+layout_mode = 0
+offset_left = -0.73999023
+offset_top = -2.4199982
+offset_right = 39.26001
+offset_bottom = 37.58
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat18" type="TextureRect" parent="Background/Wheats" unique_id=1968481955]
+layout_mode = 0
+offset_left = -3.2001343
+offset_top = -4.6000824
+offset_right = 36.799862
+offset_bottom = 35.399918
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat19" type="TextureRect" parent="Background/Wheats" unique_id=1921796377]
+layout_mode = 0
+offset_left = -3.200003
+offset_top = -3.2000017
+offset_right = 36.79999
+offset_bottom = 36.8
+scale = Vector2(0.1, 0.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_rn0vv")
+
+[node name="Wheat20" type="TextureRect" parent="Background/Wheats" unique_id=330882743]
+layout_mode = 0
+offset_left = 1.2
+offset_top = -3.8000019
+offset_right = 41.199997
+offset_bottom = 36.199997
 scale = Vector2(0.1, 0.1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_rn0vv")
@@ -234,5 +342,9 @@ offset_bottom = 22.199993
 texture_normal = SubResource("AnimatedTexture_7sc4i")
 ignore_texture_size = true
 stretch_mode = 3
+
+[node name="Sfx" type="AudioStreamPlayer" parent="." unique_id=231903630]
+stream = ExtResource("7_uwv3f")
+volume_db = 1.857
 
 [connection signal="pressed" from="Background/Button" to="." method="_on_button_pressed"]

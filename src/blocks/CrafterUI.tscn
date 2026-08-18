@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dlwbw3ta5m3p0" path="res://sprites/items/ProducerItem.png" id="5_nvh68"]
 [ext_resource type="Texture2D" uid="uid://x6vrsd2g2ssn" path="res://sprites/interfaces/CrafterArrow.png" id="7_32si5"]
 [ext_resource type="Texture2D" uid="uid://c4nwtcu63n5iu" path="res://sprites/items/GeneratorItem.png" id="10_m0v6m"]
+[ext_resource type="AudioStream" uid="uid://dkdq6hobcgvme" path="res://sound/sfx/Button.wav" id="11_1y8yw"]
 
 [node name="CrafterUI" type="Control" unique_id=680241838]
 z_index = 3
@@ -167,6 +168,9 @@ offset_bottom = 18.857143
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_32si5")
 stretch_mode = 5
+
+[node name="Sfx" type="AudioStreamPlayer" parent="." unique_id=262215026]
+stream = ExtResource("11_1y8yw")
 
 [connection signal="pressed" from="Background/Producer Button" to="." method="_on_producer_button_pressed"]
 [connection signal="pressed" from="Background/Generator Button" to="." method="_on_generator_button_pressed"]

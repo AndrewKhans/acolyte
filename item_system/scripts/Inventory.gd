@@ -22,11 +22,11 @@ func _ready() -> void:
 	for i in range(HOTBAR_SIZE): hotbar_items.append(null)
 	
 	add_itemStack_to_hotbar(Shovel.new())
-	add_itemStack_to_hotbar(Seeds.new(5))
-	add_itemStack_to_hotbar(Wheat.new(20))
-	add_itemStack_to_hotbar(IronIngot.new(15))
-	add_itemStack_to_hotbar(Generator.new(5))
-	add_itemStack_to_hotbar(Producer.new(5))
+	add_itemStack_to_hotbar(Seeds.new(4))
+	#add_itemStack_to_hotbar(Wheat.new(20))
+	#add_itemStack_to_hotbar(IronIngot.new(1))
+	#add_itemStack_to_hotbar(Generator.new(5))
+	#add_itemStack_to_hotbar(Producer.new(5))
 	
 	hotbar_ui.get_node("HBox").get_node("Slot0").get_node("HotbarSprite").play("selected")
 
@@ -82,27 +82,26 @@ func create_hotbar_ui_slots() -> void:
 
 		hotbar_ui.get_node("HBox").add_child(slot)
 
+
 # Update the item icon and count in a slot
 func update_slot_icon(slotNum) -> void:
-	var hotbarSprite := hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).get_node_or_null("ItemSprite")
+	var hotbarNode := hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum)
+	var itemSprite := hotbarNode.get_node_or_null("ItemSprite")
 	
 	if hotbar_items[slotNum] == null or hotbar_items[slotNum].count == 0: # Slot should be empty
-		if hotbarSprite != null: hotbarSprite.queue_free()
-	elif hotbarSprite == null: # Slot is empty but should have a sprite (it was just added to hotbar)
-		var itemSprite := Sprite2D.new()
+		if itemSprite != null: itemSprite.queue_free()
+ 	# Slot is empty but should have a sprite (it was just added to hotbar)
+	elif itemSprite == null:
+		itemSprite = Sprite2D.new()
 		itemSprite.name = "ItemSprite"
 		itemSprite.texture = hotbar_items[slotNum].item_texture
-		hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).add_child(itemSprite)
-		
-		var label := Label.new()
-		label.name = "Count"
-		label.text = "" if hotbar_items[slotNum].count < 2 else str(hotbar_items[slotNum].count)
-		#var size := itemSprite.texture.get_size()
-		itemSprite.add_child(label)
-	else: # Update count
-		var label := hotbar_ui.get_node("HBox").get_node("Slot%d" % slotNum).get_node("ItemSprite").get_node("Count")
-		label.text = "" if hotbar_items[slotNum].count < 2 else str(hotbar_items[slotNum].count)
-		
+		hotbarNode.add_child(itemSprite)
+	
+	# Update count
+	if hotbar_items[slotNum] == null or hotbar_items[slotNum].count < 2:
+		hotbarNode.get_node("Count").text = ""
+	else:
+		hotbarNode.get_node("Count").text =  str(hotbar_items[slotNum].count)
 		
 func primary_action_held_item(target_loc: Vector2) -> void:
 	if hotbar_items[current_slot] == null: return

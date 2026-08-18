@@ -10,6 +10,7 @@ const BLOCK_BREAK_ANIMATION_TOTAL_FRAMES = 13
 
 var targeted_block_coords
 var in_interface: bool = false
+var can_move: bool = false
 var breaking_block: bool = false
 var breaking_block_time := 0.0
 
@@ -17,12 +18,12 @@ func _ready():
 	tile_outline.visible = false
 	
 func _process(_delta: float) -> void:
-	if in_interface: return
+	if in_interface or not can_move: return
 	block_break_logic(_delta)
 	update_tile_outline()
 
 func _physics_process(_delta: float) -> void:
-	if in_interface: return
+	if in_interface or not can_move: return
 	
 	var block_loc := BlockSystem.world_coords_to_block_coords(self.global_position)
 	var block = BlockSystem.instance.get_block_obj(block_loc)
@@ -31,7 +32,11 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event):
 	if in_interface:
-		if event.is_action_pressed("escape"):
+		if Input.is_action_pressed("move_right") \
+		or Input.is_action_pressed("move_left") \
+		or Input.is_action_pressed("move_up") \
+		or Input.is_action_pressed("move_down") \
+		or Input.is_action_pressed("escape"):
 			HUD.hide_interfaces()
 			in_interface = false
 		return
@@ -72,7 +77,7 @@ func handle_movement():
 
 func update_tile_outline():
 	var mouse_pos = get_global_mouse_position()
-
+	
 	# Snap mouse position to grid
 	var tile_pos = Vector2(
 		floor(mouse_pos.x / TILE_SIZE),
@@ -92,9 +97,10 @@ func block_break_logic(_delta) -> void:
 		breaking_block_time = 0.0
 		$TileOutline.play("default")
 		return
-		
+	
+	if targeted_block_coords == null: return
 	var block = BlockSystem.instance.get_block_obj(targeted_block_coords)
-	if block == null or (block.get_script().get_global_name() != "GeneratorBlock" and block.get_script().get_global_name() != "ProducerBlock"):
+	if block == null or (block.get_script().get_global_name() != "GeneratorBlock" and block.get_script().get_global_name() != "ProducerBlock" and block.get_script().get_global_name() != "SeedsBlock"):
 		breaking_block = false
 		return
 	
@@ -108,4 +114,6 @@ func block_break_logic(_delta) -> void:
 			$Inventory.add_itemStack_to_hotbar(Generator.new(1))
 		elif block.get_script().get_global_name() == "ProducerBlock":
 			$Inventory.add_itemStack_to_hotbar(Producer.new(1))
+		elif block.get_script().get_global_name() == "SeedsBlock":
+			$Inventory.add_itemStack_to_hotbar(Seeds.new(1))
 		BlockSystem.instance.remove_block(targeted_block_coords)

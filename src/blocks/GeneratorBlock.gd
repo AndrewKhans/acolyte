@@ -1,8 +1,10 @@
 class_name GeneratorBlock extends Block
 
 const TILESET_COORDS = Vector2i(0,1)
-const BURN_TICKS_PER_WHEAT = 120
-const MAX_WHEAT = 10
+const ALT_TILESET_COORDS = Vector2i(0,3)
+
+const BURN_TICKS_PER_WHEAT = 60
+const MAX_WHEAT = 20
 
 var hydrated: bool = false
 var running: bool = false
@@ -32,18 +34,12 @@ func on_tick() -> void:
 			burnTicksRemaining = BURN_TICKS_PER_WHEAT
 			running = true
 	
-	#if burnTicksRemaining <= 0:
-		#if wheatCount <= 0:
-			#running = false
-			#return
-		#else:
-			## If we are running, 
-			#if running:
-				#wheatCount -= 1
-			#burnTicksRemaining = BURN_TICKS_PER_WHEAT
-			#running = true
-	#
-	#burnTicksRemaining -= 1
+	
+	if running:
+		BlockSystem.instance.set_cell(world_coords, 0, ALT_TILESET_COORDS)
+	else:
+		BlockSystem.instance.set_cell(world_coords, 0, TILESET_COORDS)
+
 
 func update() -> void:
 	# Check for adjacent water

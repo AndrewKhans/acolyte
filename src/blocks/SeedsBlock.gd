@@ -1,12 +1,13 @@
 class_name SeedsBlock extends Block
 
 const TILESET_COORDS = Vector2i(2,0)
-const TICKS_PER_GROWTH = 120
+const TICKS_PER_GROWTH = 60*25
 
 var timeUntilGrown = TICKS_PER_GROWTH
 var hydrated = false
 
 func _init(worldCoords: Vector2i):
+	timeUntilGrown -= randi_range(0, 60*5)
 	super(TILESET_COORDS, worldCoords)
 	
 func on_tick() -> void:

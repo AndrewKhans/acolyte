@@ -3,7 +3,7 @@ class_name ProducerBlock extends Block
 const TILESET_COORDS = Vector2i(1,1)
 const ALT_TILESET_COORDS = Vector2i(3,1)
 const MAX_IRON = 1
-const PROCESS_TIME_TICKS = 120
+const PROCESS_TIME_TICKS = 60 * 10
 
 var hydrated := false
 var powered := false

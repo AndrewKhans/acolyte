@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dnkm5dxehl6kb"]
+
+[ext_resource type="Texture2D" uid="uid://cb0wjgtrkqaax" path="res://sprites/items/ArtifactItem.png" id="1_m5npg"]
+[ext_resource type="FontFile" uid="uid://bdsmpk6w3ypgo" path="res://sprites/aseprite.otf" id="2_j43th"]
+
+[node name="ArtifactCounter" type="Control" unique_id=751823370]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1972199997]
+layout_mode = 1
+offset_left = 37.0
+offset_top = -12.0
+offset_right = 77.0
+offset_bottom = 28.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_m5npg")
+
+[node name="Label" type="Label" parent="." unique_id=1926662094]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 45.0
+offset_bottom = 12.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_j43th")
+theme_override_font_sizes/font_size = 10
+text = "0/100"
+horizontal_alignment = 2

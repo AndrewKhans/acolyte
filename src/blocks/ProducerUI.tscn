@@ -7,6 +7,32 @@
 [ext_resource type="Texture2D" uid="uid://q5kbd6dvo3y6" path="res://sprites/interfaces/ProducerButton.png" id="5_4vspr"]
 [ext_resource type="Texture2D" uid="uid://cb0wjgtrkqaax" path="res://sprites/items/ArtifactItem.png" id="5_ak568"]
 [ext_resource type="Texture2D" uid="uid://bjlabgbxf3vql" path="res://sprites/interfaces/ProducerButtonOpen.png" id="6_ak568"]
+[ext_resource type="Texture2D" uid="uid://cork8r5h2ggio" path="res://sprites/interfaces/progress_bar/ProgressBar1.png" id="8_6tux3"]
+[ext_resource type="Texture2D" uid="uid://d2s27ue7u58yy" path="res://sprites/interfaces/progress_bar/ProgressBar2.png" id="9_qmmui"]
+[ext_resource type="Texture2D" uid="uid://dm7x6bydsx1wb" path="res://sprites/interfaces/progress_bar/ProgressBar3.png" id="10_jkhk0"]
+[ext_resource type="Texture2D" uid="uid://d0s35222gk7b1" path="res://sprites/interfaces/progress_bar/ProgressBar4.png" id="11_15e24"]
+[ext_resource type="Texture2D" uid="uid://c4wgmh6cum71q" path="res://sprites/interfaces/progress_bar/ProgressBar5.png" id="12_g02ax"]
+[ext_resource type="Texture2D" uid="uid://cfif8t02qtoci" path="res://sprites/interfaces/progress_bar/ProgressBar6.png" id="13_g5ac0"]
+[ext_resource type="Texture2D" uid="uid://dspenw65hv50h" path="res://sprites/interfaces/progress_bar/ProgressBar7.png" id="14_o5q4t"]
+[ext_resource type="Texture2D" uid="uid://h3j2qv6tade8" path="res://sprites/interfaces/progress_bar/ProgressBar8.png" id="15_8tn4h"]
+[ext_resource type="Texture2D" uid="uid://50gdmrhr1c1t" path="res://sprites/interfaces/progress_bar/ProgressBar9.png" id="16_su2e6"]
+[ext_resource type="Texture2D" uid="uid://c60mxhjuuhcob" path="res://sprites/interfaces/progress_bar/ProgressBar10.png" id="17_7uvw1"]
+[ext_resource type="Texture2D" uid="uid://c0hlk04668pxa" path="res://sprites/interfaces/progress_bar/ProgressBar11.png" id="18_lecat"]
+[ext_resource type="Texture2D" uid="uid://dkst5ufdf5agk" path="res://sprites/interfaces/progress_bar/ProgressBar12.png" id="19_6sx0y"]
+[ext_resource type="Texture2D" uid="uid://cksc67ivv4n6i" path="res://sprites/interfaces/progress_bar/ProgressBar13.png" id="20_52w0p"]
+[ext_resource type="Texture2D" uid="uid://0q1iybmjn5w" path="res://sprites/interfaces/progress_bar/ProgressBar14.png" id="21_ysgjn"]
+[ext_resource type="Texture2D" uid="uid://bgknfokldo3jg" path="res://sprites/interfaces/progress_bar/ProgressBar15.png" id="22_nwhxw"]
+[ext_resource type="Texture2D" uid="uid://cvpoqi5d8c2lf" path="res://sprites/interfaces/progress_bar/ProgressBar16.png" id="23_x6vjc"]
+[ext_resource type="Texture2D" uid="uid://dquae7cqaemaa" path="res://sprites/interfaces/progress_bar/ProgressBar17.png" id="24_eccl2"]
+[ext_resource type="Texture2D" uid="uid://dfqx74xu1s6rp" path="res://sprites/interfaces/progress_bar/ProgressBar18.png" id="25_vt4g2"]
+[ext_resource type="Texture2D" uid="uid://b5mjheij5bi01" path="res://sprites/interfaces/progress_bar/ProgressBar19.png" id="26_kkhgn"]
+[ext_resource type="Texture2D" uid="uid://eok1830wyc00" path="res://sprites/interfaces/progress_bar/ProgressBar20.png" id="27_juvux"]
+[ext_resource type="Texture2D" uid="uid://cxfshporltj0i" path="res://sprites/interfaces/progress_bar/ProgressBar21.png" id="28_a8pxb"]
+[ext_resource type="Texture2D" uid="uid://ui3lpyho64k6" path="res://sprites/interfaces/progress_bar/ProgressBar22.png" id="29_v1wfs"]
+[ext_resource type="Texture2D" uid="uid://csymrx8oau2sj" path="res://sprites/interfaces/progress_bar/ProgressBar23.png" id="30_y3ojy"]
+[ext_resource type="Texture2D" uid="uid://bffampbr5nuuc" path="res://sprites/interfaces/progress_bar/ProgressBar24.png" id="31_hp7k8"]
+[ext_resource type="Texture2D" uid="uid://dmcb4hfth3fuj" path="res://sprites/interfaces/progress_bar/ProgressBar25.png" id="32_fgt4y"]
+[ext_resource type="AudioStream" uid="uid://equ7oa63joe2" path="res://sound/sfx/Producer.wav" id="33_qmmui"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_e8heu"]
 frames = 2
@@ -14,6 +40,89 @@ pause = true
 frame_0/texture = ExtResource("5_4vspr")
 frame_1/texture = ExtResource("6_ak568")
 frame_1/duration = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24ckr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6tux3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qmmui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jkhk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_15e24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g02ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_g5ac0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o5q4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8tn4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_su2e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7uvw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lecat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6sx0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_52w0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ysgjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_nwhxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_x6vjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_eccl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_vt4g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_kkhgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_juvux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_a8pxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_v1wfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_y3ojy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hp7k8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_fgt4y")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
 
 [node name="ProducerUI" type="Control" unique_id=680241838]
 z_index = 3
@@ -124,5 +233,15 @@ scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("4_4vspr")
+
+[node name="ProgressBar" type="AnimatedSprite2D" parent="Background" unique_id=1087169561]
+position = Vector2(15.999998, 33.199993)
+scale = Vector2(0.82, 0.82)
+sprite_frames = SubResource("SpriteFrames_24ckr")
+speed_scale = 0.0
+
+[node name="Sfx" type="AudioStreamPlayer" parent="." unique_id=156775382]
+stream = ExtResource("33_qmmui")
+volume_db = 1.857
 
 [connection signal="pressed" from="Background/Button" to="." method="_on_button_pressed"]

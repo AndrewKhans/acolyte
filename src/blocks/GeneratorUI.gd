@@ -26,10 +26,7 @@ func show_ui(HUD: Control, player: CharacterBody2D, generator: GeneratorBlock) -
 		$Background/Warning.hide()
 	else:
 		$Background/Warning.show()
-	
-	for w in all_wheats: $Background/Wheats.get_node(w).hide()
 
-	update_graphics()
 	show()
 
 func insert_wheat_to_generator() -> void:
@@ -38,14 +35,15 @@ func insert_wheat_to_generator() -> void:
 	
 	var wheatToAdd = space_in_generator if wheatCount >= space_in_generator else wheatCount
 	if wheatToAdd <= 0: return
+	$Sfx.play()
 	self.player.get_node("Inventory").remove_items("Wheat", wheatToAdd)
 	self.generator.wheatCount += wheatToAdd
 	
-	update_graphics()
-
 func _process(delta: float) -> void:
-	if self.visible:
-		update_graphics()
+	if not self.visible: return
+	
+	update_graphics()
+	
 	secondsSinceTextSwap += delta
 	if secondsSinceTextSwap >= TEXT_ANIMATION_DURATION:
 		if $Background/Warning.get("theme_override_colors/font_color") == black:
@@ -57,6 +55,7 @@ func _process(delta: float) -> void:
 func update_graphics() -> void:
 	update_wheats_display()
 	update_button_display()
+	update_hint_display()
 	
 func update_wheats_display() -> void:
 	var visibleWheats = []
@@ -85,6 +84,13 @@ func update_button_display() -> void:
 		$Background.get_node("Button").texture_normal.set_current_frame(1)
 	else:
 		$Background.get_node("Button").texture_normal.set_current_frame(0)
+
+func update_hint_display() -> void:
+	if generator.running:
+		$Background/Hint.show()
+	else:
+		$Background/Hint.hide()
+		
 
 func _on_button_pressed() -> void:
 	insert_wheat_to_generator()
